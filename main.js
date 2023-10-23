@@ -2,9 +2,8 @@ import searchPeople from "./searchPeople.js";
 import people from "./array.js";
 
 const year = 2023;
-const greeting = (name, birthYear = 2000)=>{
-    console.log(`Я ${name}, мені ${year-birthYear} років`)
-}
+const greeting = (name, birthYear = 2000)=> `Я ${name}, мені ${year-birthYear} років`
+
 greeting("Max", 2005);
 
 

@@ -10,5 +10,5 @@ for (let i = 0; i < 15; i++) {
   if (!(i % 2)) people.push(new Man(name, age, weight));
   else people.push(new Woman(name, age, weight));
 }
-
+console.log(people)
 export default people; 

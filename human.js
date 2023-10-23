@@ -6,7 +6,7 @@ class Human{
         this.gender = gender;
     }
     getInfo(prop){
-        if(prop == null) return this;
+        if (prop == null) return this;
         else return this[prop]
     }
     greeting(){
