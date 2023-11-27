@@ -3,10 +3,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-    entry: "./index.js",
+    entry: {
+        index: {
+            import: "./src/index.js"
+        },
+        search: {
+            import: "./src/search.js"
+        }
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.[hash].js',
+        filename: '[name].bundle.[hash].js',
         clean: true,
     },
     module:{
@@ -27,11 +34,22 @@ module.exports = {
                 test: /\.(js)$/, 
                 use: 'babel-loader' 
             },
+            {
+                test: /\.mustache$/,
+                loader: 'mustache-loader'
+            },
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve("index.html")
+            filename: "index.html",
+            template: path.resolve("./src/pages/greeting.html"),
+            chunks: "index"
+        }),
+        new HtmlWebpackPlugin({
+            filename: "searchPeople.html",
+            template: path.resolve("./src/pages/searchPeople.html"),
+            chunks: "search"
         }),
         new webpack.EnvironmentPlugin({
             'NODE_ENV': 'production'
